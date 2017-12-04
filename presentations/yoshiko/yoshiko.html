@@ -78,10 +78,15 @@
 				width: 1200,
 				height: 860,
 				autoSlide: 0,
+				math: {
+					// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'
+				},
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
 				{ src: '../../plugin/markdown/marked.js' },
+				{ src: '../../plugin/math/math.js', async: true },
 				{ src: '../../plugin/markdown/markdown.js' },
 				{ src: '../../plugin/markdown/zoom.js', async: true, condition: function(){ return !!document.body.classList; } },
 				{ src: '../../plugin/zoom-js/zoom.js', async: true, condition: function(){ return !!document.body.classList; } },
