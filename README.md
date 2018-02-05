@@ -50,7 +50,7 @@ https://cytoscape.github.io/cytoscape-tutorials/presentations/advanced-automatio
 You can also generate a PDF version of any presentation or protocol and save it as a local file to share or present offline. Note that animated slides do not display as separate slides in PDF form, but rather as single slides in their final form. However, protocols  should be composed in such a way to display properly in PDF. Simply append ```?print-pdf``` to the end of the url for any protocol or protocol module, e.g.,
 
 ```
-https://cytoscape.github.io/cytoscape-tutorials/protocols/modules/loading-omics-data/index.html?print-pdf#/
+https://cytoscape.github.io/cytoscape-tutorials/protocols/modules/basic-data-visualization/?print-pdf
 ```
 Then choose File>Print... and set the orientation to ```landscape``` and Save to PDF. Verify that the page breaks are correct throughout the presentation. For longer presentations, you may need to generate the PDF using an alternative approach, see [Decktape and PhantomJS](https://github.com/astefanutti/decktape). Example usage:
 
@@ -59,7 +59,7 @@ Then choose File>Print... and set the orientation to ```landscape``` and Save to
 ```
 
 ## Sharing
-Please feel free to use, share, copy or adapt any of the training materials you find here. They are all implicitly published under the CC0 waiver for maximum resuse potential.
+Please feel free to use, share, copy or adapt any of the training materials you find here. They are all implicitly published under the CC0 waiver for maximum reuse potential.
 
 ## Building
 In order to adapt or compose your own tutorial, and you do not already have edit permissions for this repo, you can simply [fork the repo](https://github.com/cytoscape/cytoscape-tutorials). If your content is of general use, please submit a pull request and we'll be happy to acccept it.  
@@ -258,19 +258,25 @@ To include a button, add a div of class "cybrowser". The example below adds a bu
 ```
 
 To hide the "cybrowser" div, and thus the button, outside of CyBrowser, the following javascript should be added to the parent index file. For example, if the automation code was added to a module.hml file, the javascript should be added to the **body** of the index.html file that includes that module.
+Similarly, there is also a "not-cybrowser" div class that can be used to customize content for regular browser vieweing.
 
 ```
 <pre><code data-trim>
 <script>
-                        Reveal.addEventListener( 'ready', function() {
-			if(!window.navigator.userAgent.includes('CyBrowser')){
-				var divs = document.getElementsByClassName("cybrowser")
-				for (var i=0;i<divs.length;i++){
-					divs[i].style.display = "none";
-				}
-			}
-                });
-                </script>
+	Reveal.addEventListener( 'ready', function() {
+	if(!window.navigator.userAgent.includes('CyBrowser')){
+		var divs = document.getElementsByClassName("cybrowser")
+		for (var i=0;i<divs.length;i++){
+			divs[i].style.display = "none";
+		}
+	} else {
+		var divs = document.getElementsByClassName("not-cybrowser")
+		for (var i=0;i<divs.length;i++){
+			divs[i].style.display = "none";
+		}
+	}
+});
+</script>  
 </code></pre>
 ```
 
